@@ -1,10 +1,10 @@
 import pyotp
-from RPA.Robocloud.Secrets import Secrets
+from RPA.Robocorp.Vault import Vault
 
 
 class TOTPLibrary:
     def __init__(self, secretname, secretkey):
-        secrets = Secrets().get_secret(secretname)
+        secrets = Vault().get_secret(secretname)
         self.totp = pyotp.TOTP(secrets[secretkey])
 
     def get_totp(self):
